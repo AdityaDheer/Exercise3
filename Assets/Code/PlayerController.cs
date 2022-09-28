@@ -6,8 +6,11 @@ public class PlayerController : MonoBehaviour
 {
 
     [SerializeField] public int initialMoveSpeed = 4; // how fast the player moves
-    public int moveSpeed = 4;
+    public int moveSpeed = 4; // updates when sprinting
     [SerializeField] public int sprintSpeedMultiplier = 2;
+
+    [SerializeField] AudioSource footstepsSound;
+    [SerializeField] AudioSource sprintSound;
 
     [SerializeField] int jumpForce = 300; // ammount of force applied to create a jump
     Rigidbody _rigidbody;
@@ -17,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     float yRotationForMovement;
     float lookSpeedX = 3;
-    
 
     //The physics layers you want the player to be able to jump off of. Just dont include the layer the palyer is on.
     public LayerMask groundLayer;
@@ -64,5 +66,25 @@ public class PlayerController : MonoBehaviour
         {
             moveSpeed = initialMoveSpeed;
         }
+
+        if(grounded && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
+        {
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                footstepsSound.enabled = false;
+                sprintSound.enabled = true;
+            }
+            else
+            {
+                footstepsSound.enabled = true;
+                sprintSound.enabled = false;
+            }
+        }
+        else
+        {
+            footstepsSound.enabled = false;
+            sprintSound.enabled = false;
+        }
+
     }
 }
