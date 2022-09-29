@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public int moveSpeed = 4; // updates when sprinting
     [SerializeField] public int sprintSpeedMultiplier = 2;
 
+    public int score = 0;
+
     [SerializeField] public int max_stamina = 5000;
     int stamina;
     int sprint_cooldown = 0;
@@ -66,6 +68,7 @@ public class PlayerController : MonoBehaviour
         if (grounded && Input.GetButtonDown("Jump")) //if the player is on the ground and press Spacebar
         {
             _rigidbody.AddForce(new Vector3(0, jumpForce, 0)); // Add a force jumpForce in the Y direction
+            stamina -= 500;
         }
 
         staminaBar.value = (float) stamina/max_stamina;
@@ -78,7 +81,7 @@ public class PlayerController : MonoBehaviour
         }
         else 
         {
-            moveSpeed = initialMoveSpeed;
+            if(grounded) {moveSpeed = initialMoveSpeed;}
             if (stamina_wait > 0) {stamina_wait--;}
         }
 
