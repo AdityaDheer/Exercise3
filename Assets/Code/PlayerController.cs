@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public int moveSpeed = 4; // updates when sprinting
     [SerializeField] public int sprintSpeedMultiplier = 2;
 
-    public int score = 0;
+    [SerializeField] public int score = 0;
 
     [SerializeField] public int max_stamina = 5000;
     int stamina;
@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioSource footstepsSound;
     [SerializeField] AudioSource sprintSound;
     [SerializeField] AudioSource outOfBreathSound;
+    [SerializeField] public AudioSource pickupSound;
 
     [SerializeField] int jumpForce = 300; // ammount of force applied to create a jump
     Rigidbody _rigidbody;
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
         Vector3 moveDir = transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal"); // Use GetAxisRaw for snappier but non-analogue  movement
         moveDir *= moveSpeed;
         moveDir.y = _rigidbody.velocity.y; // We dont want y so we replace y with that the _rigidbody.velocity.y already is.
-        _rigidbody.velocity = moveDir; // Set the velocity to our movement vector
+        if (grounded) {_rigidbody.velocity = moveDir;} // Set the velocity to our movement vector
 
         //The sphere check draws a sphere like a ray cast and returns true if any collider is withing its radius.
         //grounded is set to true if a sphere at feetTrans.position with a radius of groundCheckDist detects any objects on groundLayer within it
