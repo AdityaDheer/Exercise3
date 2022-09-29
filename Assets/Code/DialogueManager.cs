@@ -9,15 +9,19 @@ public class DialogueManager : MonoBehaviour
 
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
+    public GameObject textbox;
+    public PlayerController Player;
     
     private Queue<string> sentences;
     // Start is called before the first frame update
     void Start()
     {
+        Player.PlayerControlAllowed = false;
        sentences = new Queue<string>(); 
     }
 
     public void StartDialogue(Dialogue dialogue){
+        textbox.SetActive(true);
 
         nameText.text = dialogue.name;
 
@@ -52,6 +56,8 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue(){
         Debug.Log("End of conversation.");
+        textbox.SetActive(false);
+        Player.PlayerControlAllowed = true;
     }
 
     
