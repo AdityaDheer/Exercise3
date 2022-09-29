@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public int moveSpeed = 4; // updates when sprinting
     [SerializeField] public int sprintSpeedMultiplier = 2;
 
-    [SerializeField] public int score = 0;
+    public int score = 0;
 
     [SerializeField] public int max_stamina = 5000;
     int stamina;
@@ -22,7 +22,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioSource footstepsSound;
     [SerializeField] AudioSource sprintSound;
     [SerializeField] AudioSource outOfBreathSound;
-    [SerializeField] public AudioSource pickupSound;
+    //[SerializeField] public AudioSource pickupSound;
+    [SerializeField] AudioSource jumpSound;
+    
 
     [SerializeField] int jumpForce = 300; // ammount of force applied to create a jump
     Rigidbody _rigidbody;
@@ -65,11 +67,14 @@ public class PlayerController : MonoBehaviour
         //xRotation -= Input.GetAxis("Mouse Y") * lookSpeedY;
 
         transform.eulerAngles = new Vector3(0, yRotationForMovement, 0);
+
+        //this.Page1.Canvas.text = score;
         
         if (grounded && Input.GetButtonDown("Jump")) //if the player is on the ground and press Spacebar
         {
             _rigidbody.AddForce(new Vector3(0, jumpForce, 0)); // Add a force jumpForce in the Y direction
             stamina -= 500;
+            jumpSound.Play();
         }
 
         staminaBar.value = (float) stamina/max_stamina;
@@ -86,7 +91,7 @@ public class PlayerController : MonoBehaviour
             if (stamina_wait > 0) {stamina_wait--;}
         }
 
-        if (stamina < max_stamina && !Input.GetButton("Sprint") && sprint_cooldown <= 750 && stamina_wait == 0)
+        if (grounded && stamina < max_stamina && !Input.GetButton("Sprint") && sprint_cooldown <= 750 && stamina_wait == 0)
         {
             stamina ++;
         }
