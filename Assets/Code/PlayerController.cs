@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,8 +10,16 @@ public class PlayerController : MonoBehaviour
     public int moveSpeed = 4; // updates when sprinting
     [SerializeField] public int sprintSpeedMultiplier = 2;
 
+    [SerializeField] public int max_stamina = 5000;
+    int stamina;
+    int sprint_cooldown = 0;
+    int stamina_wait = 0;
+
+    public Slider staminaBar;
+
     [SerializeField] AudioSource footstepsSound;
     [SerializeField] AudioSource sprintSound;
+    [SerializeField] AudioSource outOfBreathSound;
 
     [SerializeField] int jumpForce = 300; // ammount of force applied to create a jump
     Rigidbody _rigidbody;
@@ -31,6 +40,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody>(); // Using GetComponent is expensive. Always do it in start and chache it when you can.
+        stamina = max_stamina;
     }
 
     void FixedUpdate()
@@ -58,18 +68,37 @@ public class PlayerController : MonoBehaviour
             _rigidbody.AddForce(new Vector3(0, jumpForce, 0)); // Add a force jumpForce in the Y direction
         }
 
-        if (grounded && Input.GetButton("Sprint"))
+        staminaBar.value = (float) stamina/max_stamina;
+
+        if (grounded && Input.GetButton("Sprint") && stamina > 0 && sprint_cooldown == 0)
         {
             moveSpeed = initialMoveSpeed * sprintSpeedMultiplier;
+            stamina --;
+            stamina_wait = 500;
         }
-        else
+        else 
         {
             moveSpeed = initialMoveSpeed;
+            if (stamina_wait > 0) {stamina_wait--;}
         }
+
+        if (stamina < max_stamina && !Input.GetButton("Sprint") && sprint_cooldown <= 750 && stamina_wait == 0)
+        {
+            stamina ++;
+        }
+
+        if (stamina == 0 && sprint_cooldown == 0) {sprint_cooldown = 2000;}
+        
+        if (sprint_cooldown > 0)
+        {
+            sprint_cooldown --;
+            outOfBreathSound.enabled = true;
+        }
+        else {outOfBreathSound.enabled = false;}
 
         if(grounded && (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D)))
         {
-            if (Input.GetKey(KeyCode.LeftShift))
+            if (Input.GetKey(KeyCode.LeftShift) && sprint_cooldown == 0)
             {
                 footstepsSound.enabled = false;
                 sprintSound.enabled = true;
