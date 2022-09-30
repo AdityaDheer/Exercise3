@@ -576,7 +576,7 @@ GameObject:
   - component: {fileID: 5429468261946780434}
   - component: {fileID: 5429468261946780437}
   - component: {fileID: 5429468261946780436}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -663,14 +663,10 @@ GameObject:
   - component: {fileID: 5429468263180365000}
   - component: {fileID: 5429468263180365003}
   - component: {fileID: 5429468263180365002}
-<<<<<<< HEAD
-  m_Layer: 0
-=======
   - component: {fileID: 4838428749094023171}
   - component: {fileID: 5855490572723643658}
   - component: {fileID: 4635910450918952863}
   m_Layer: 6
->>>>>>> Ex4_shared_resources
   m_Name: Player flashlight
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1285,7 +1281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8236764423340858241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.514}
+  m_LocalPosition: {x: 0, y: 0, z: 0.618}
   m_LocalScale: {x: 1, y: 0.6666666, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1303,13 +1299,9 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-<<<<<<< HEAD
-  m_Color: {r: 0.995561, g: 1, b: 0.8537736, a: 1}
-=======
   m_Color: {r: 0.9622642, g: 0.9253012, b: 0.5855287, a: 1}
->>>>>>> Ex4_shared_resources
   m_Intensity: 1
-  m_Range: 30
+  m_Range: 20
   m_SpotAngle: 50
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
