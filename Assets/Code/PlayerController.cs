@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public int moveSpeed = 4; // updates when sprinting
     [SerializeField] public int sprintSpeedMultiplier = 2;
 
-    [SerializeField] public int score = 0;
+    public int score = 0;
 
     [SerializeField] public int max_stamina = 5000;
     int stamina;
@@ -24,7 +24,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioSource footstepsSound;
     [SerializeField] AudioSource sprintSound;
     [SerializeField] AudioSource outOfBreathSound;
-    [SerializeField] public AudioSource pickupSound;
+    //[SerializeField] public AudioSource pickupSound;
+    [SerializeField] AudioSource jumpSound;
+    
 
     [SerializeField] int jumpForce = 300; // ammount of force applied to create a jump
     Rigidbody _rigidbody;
@@ -41,6 +43,20 @@ public class PlayerController : MonoBehaviour
     public Transform feetTrans; //Position of where the players feet touch the ground
     float groundCheckDist = .5f; //How far down to check for the ground. The radius of Physics.CheckSphere
     public bool grounded = false; //Is the player on the ground
+
+    public static PlayerController Instance;
+
+    private void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start()
     {
@@ -70,12 +86,15 @@ public class PlayerController : MonoBehaviour
         xRotation -= Input.GetAxis("Mouse Y") * lookSpeedY;
         xRotation = Mathf.Clamp(xRotation, -90, 90); //Keeps up/down head rotation realistic
 
-        transform.eulerAngles = new Vector3(xRotation, yRotation, 0);
+        transform.eulerAngles = new Vector3(0, yRotationForMovement, 0);
+
+        //this.Page1.Canvas.text = score;
         
         if (grounded && Input.GetButtonDown("Jump")) //if the player is on the ground and press Spacebar
         {
             _rigidbody.AddForce(new Vector3(0, jumpForce, 0)); // Add a force jumpForce in the Y direction
             stamina -= 500;
+            jumpSound.Play();
         }
 
         if(staminaBar != null){
@@ -94,7 +113,7 @@ public class PlayerController : MonoBehaviour
             if (stamina_wait > 0) {stamina_wait--;}
         }
 
-        if (stamina < max_stamina && !Input.GetButton("Sprint") && sprint_cooldown <= 750 && stamina_wait == 0)
+        if (grounded && stamina < max_stamina && !Input.GetButton("Sprint") && sprint_cooldown <= 750 && stamina_wait == 0)
         {
             stamina ++;
         }

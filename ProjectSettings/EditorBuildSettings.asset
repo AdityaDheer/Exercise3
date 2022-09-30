@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Train Station Scene.unity
-    guid: 762995f1b73de5a42b0552def353ba4c
+    path: Assets/Scenes/Transition level 2 to 3.unity
+    guid: bff7923b8c8c6214186352624d9068d6
+  - enabled: 1
+    path: Assets/Scenes/Aditya Scene.unity
+    guid: 3c6b65ec76f357640a7442342dd4b14c
+  - enabled: 1
+    path: Assets/Scenes/Title Scene.unity
+    guid: d5a9e577655ad2b4fa24cb52e6c2e783
   m_configObjects: {}
