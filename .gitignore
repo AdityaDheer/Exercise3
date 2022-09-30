@@ -59,4 +59,8 @@ sysinfo.txt
 crashlytics-build.properties
 
 UserSettings/Layouts/default-2021.dwlt
+<<<<<<< HEAD
+UserSettings/EditorUserSettings.asset
+=======
 UserSettings/Layouts/CurrentMaximizeLayout.dwlt
+>>>>>>> Ex4_shared_resources
