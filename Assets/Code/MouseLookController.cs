@@ -28,7 +28,7 @@ public class MouseLookController : MonoBehaviour
     {
         xRotation -= Input.GetAxis("Mouse Y") * lookSpeedY;
         yRotation += Input.GetAxis("Mouse X") * lookSpeedX;
-        xRotation = Mathf.Clamp(xRotation, -80, 80); //Keeps up/down head rotation realistic
+        xRotation = Mathf.Clamp(xRotation, -60, 60); //Keeps up/down head rotation realistic
         camTrans.localEulerAngles = new Vector3(xRotation, yRotation, 0);
         transform.eulerAngles = new Vector3(xRotation, yRotation, 0);
     }
