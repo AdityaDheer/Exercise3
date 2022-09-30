@@ -10,6 +10,9 @@ public class LevelTrigger : MonoBehaviour
     //[SerializeField] int scoreToLeave = 0;
     //[SerializeField] public GameObject denialText;
     [SerializeField] string levelToLoad;
+    //[SerializeField] float _x = 0;
+    //[SerializeField] float _y = 0;
+    //[SerializeField] float _z = 0;
 
     void OnTriggerEnter(Collider other)
     {
@@ -23,7 +26,8 @@ public class LevelTrigger : MonoBehaviour
 
         //else 
         //{
-            SceneManager.LoadScene (sceneName:levelToLoad);
+        SceneManager.LoadSceneAsync(sceneName:levelToLoad);
         //}
+        //other.transform.position = new Vector3(_x, _y, _z);
     }
 }

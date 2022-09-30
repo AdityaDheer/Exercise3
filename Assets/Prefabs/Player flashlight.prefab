@@ -818,6 +818,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8aed589fe00a223499e4fc991acf6b91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerControlAllowed: 1
   initialMoveSpeed: 4
   moveSpeed: 4
   sprintSpeedMultiplier: 2
@@ -1193,7 +1194,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5965684850918691542
 RectTransform:
   m_ObjectHideFlags: 0
