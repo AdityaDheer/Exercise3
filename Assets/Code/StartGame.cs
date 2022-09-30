@@ -15,7 +15,7 @@ public class StartGame : MonoBehaviour
     public void GameStart()
     {
         UpdateScore.score = 0;
-        SceneManager.LoadScene("Nick's Scene");
+        SceneManager.LoadScene("Train Station Scene");
     }
 
     public void LoadLevel3()
