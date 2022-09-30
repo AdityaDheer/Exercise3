@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Train Station Scene.unity
+    guid: 762995f1b73de5a42b0552def353ba4c
   m_configObjects: {}

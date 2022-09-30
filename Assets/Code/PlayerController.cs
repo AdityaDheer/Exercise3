@@ -78,7 +78,9 @@ public class PlayerController : MonoBehaviour
             stamina -= 500;
         }
 
-        staminaBar.value = (float) stamina/max_stamina;
+        if(staminaBar != null){
+            staminaBar.value = (float) stamina/max_stamina;
+        }
 
         if (grounded && Input.GetButton("Sprint") && stamina > 0 && sprint_cooldown == 0)
         {
