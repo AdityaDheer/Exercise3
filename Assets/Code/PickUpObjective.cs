@@ -13,7 +13,7 @@ public class PickUpObjective : MonoBehaviour
         UpdateScore.score ++;
         Destroy(gameObject);
         if (SceneManager.GetActiveScene().name == "Aditya Scene") {
-            if (UpdateScore.score == 6) {
+            if (UpdateScore.score == 1) {
                 SceneManager.LoadScene("Game Over Scene");
             }
         }
