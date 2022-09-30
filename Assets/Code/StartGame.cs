@@ -14,7 +14,14 @@ public class StartGame : MonoBehaviour
     // Update is called once per frame
     public void GameStart()
     {
+        UpdateScore.score = 0;
         SceneManager.LoadScene("Nick's Scene");
+    }
+
+    public void LoadLevel3()
+    {
+        UpdateScore.score = 0;
+        SceneManager.LoadScene("Aditya Scene");
     }
 
     public void LoadCredits()
