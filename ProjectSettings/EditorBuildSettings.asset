@@ -5,13 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-<<<<<<< HEAD
   - enabled: 1
-    path: Assets/Scenes/Transition level 2 to 3.unity
-    guid: bff7923b8c8c6214186352624d9068d6
+    path: Assets/Scenes/Game Over Scene.unity
+    guid: 9bc8e872514d1444a98c24e25ab036cd
   - enabled: 1
-    path: Assets/Scenes/Aditya Scene.unity
-    guid: 3c6b65ec76f357640a7442342dd4b14c
+    path: Assets/Scenes/Game Credits.unity
+    guid: 5f1a9d1b6105f0c4c83a44733c5b7089
   - enabled: 1
     path: Assets/Scenes/Title Scene.unity
     guid: d5a9e577655ad2b4fa24cb52e6c2e783
@@ -19,17 +18,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Train Station Scene.unity
     guid: 762995f1b73de5a42b0552def353ba4c
   - enabled: 1
-    path: Assets/Scenes/Game Over Scene.unity
-    guid: 9bc8e872514d1444a98c24e25ab036cd
+    path: Assets/Scenes/Aditya Scene.unity
+    guid: 3c6b65ec76f357640a7442342dd4b14c
   - enabled: 1
-    path: Assets/Scenes/Game Credits.unity
-    guid: 5f1a9d1b6105f0c4c83a44733c5b7089
-=======
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+    path: Assets/Scenes/City Scene.unity
+    guid: bb53cd34454b34046b58e033685e5f36
   - enabled: 1
-    path: Assets/Scenes/Ex 4 Nick.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
->>>>>>> Ex4_Nick
+    path: Assets/Scenes/Transition level 2 to 3.unity
+    guid: bff7923b8c8c6214186352624d9068d6
   m_configObjects: {}

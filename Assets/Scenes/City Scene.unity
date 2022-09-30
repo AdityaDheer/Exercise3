@@ -21077,7 +21077,7 @@ PrefabInstance:
       objectReference: {fileID: 1795900197}
     - target: {fileID: 2594043869798384532, guid: b1578ec4a2181cd4cb031fb6f728ab8a, type: 3}
       propertyPath: levelToLoad
-      value: SampleScene
+      value: Train Station Scene
       objectReference: {fileID: 0}
     - target: {fileID: 2594043869798384532, guid: b1578ec4a2181cd4cb031fb6f728ab8a, type: 3}
       propertyPath: scoreToLeave
