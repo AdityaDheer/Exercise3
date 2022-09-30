@@ -30,10 +30,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int jumpForce = 300; // ammount of force applied to create a jump
     Rigidbody _rigidbody;
 
-    //float xRotation;
-    //float lookSpeedY = 3;
+    float xRotation;
+    float lookSpeedY = 3;
 
-    float yRotationForMovement;
+    float yRotation;
     float lookSpeedX = 3;
 
     //The physics layers you want the player to be able to jump off of. Just dont include the layer the palyer is on.
@@ -78,10 +78,12 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        yRotationForMovement += Input.GetAxis("Mouse X") * lookSpeedX;
-        //xRotation -= Input.GetAxis("Mouse Y") * lookSpeedY;
+        yRotation += Input.GetAxis("Mouse X") * lookSpeedX;
+        xRotation -= Input.GetAxis("Mouse Y") * lookSpeedY;
+        xRotation = Mathf.Clamp(xRotation, -90, 90); //Keeps up/down head rotation realistic
 
-        transform.eulerAngles = new Vector3(0, yRotationForMovement, 0);
+
+        transform.eulerAngles = new Vector3(xRotation, yRotation, 0);
 
         //this.Page1.Canvas.text = score;
         

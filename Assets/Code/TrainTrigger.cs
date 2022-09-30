@@ -34,7 +34,7 @@ public class TrainTrigger : MonoBehaviour
         yield return new WaitForSeconds(5.0f);
         text.SetActive(false);
         animateTrain.Play();
-
+        
         yield return new WaitForSeconds(1.43f);
         SceneManager.LoadScene(NextLevel);
     }
