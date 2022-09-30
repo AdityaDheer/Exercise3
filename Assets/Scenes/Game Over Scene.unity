@@ -985,6 +985,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1552822765}
+    - target: {fileID: 6906788320915434110, guid: 248961a0bbdd4594db58afcbd1d8b94c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadHome
+      objectReference: {fileID: 0}
     - target: {fileID: 6906788321530508729, guid: 248961a0bbdd4594db58afcbd1d8b94c, type: 3}
       propertyPath: m_text
       value: PLAY AGAIN
