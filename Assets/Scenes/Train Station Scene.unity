@@ -20845,7 +20845,7 @@ MonoBehaviour:
   animateTrain: {fileID: 1981817573}
   animationTriggered: 0
   Player: {fileID: 742052127}
-  NextLevel: Aditya Scene
+  NextLevel: Transition level 2 to 3
 --- !u!1 &1133876921
 GameObject:
   m_ObjectHideFlags: 0

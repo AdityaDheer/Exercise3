@@ -26,6 +26,14 @@ public class StartGame : MonoBehaviour
 
     public void LoadCredits()
     {
-        SceneManager.LoadScene("Credits");
+        SceneManager.LoadScene("Game Credits");
+    }
+
+    public void ExitGame() {
+        Application.Quit();
+    }
+
+    public void LoadHome() {
+        SceneManager.LoadScene("Title Scene");
     }
 }
