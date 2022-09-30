@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
 
+    public bool PlayerControlAllowed = true;
+
     [SerializeField] public int initialMoveSpeed = 4; // how fast the player moves
     public int moveSpeed = 4; // updates when sprinting
     [SerializeField] public int sprintSpeedMultiplier = 2;
@@ -29,10 +31,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] int jumpForce = 300; // ammount of force applied to create a jump
     Rigidbody _rigidbody;
 
-    //float xRotation;
-    //float lookSpeedY = 3;
+    float xRotation;
+    float lookSpeedY = 3;
 
-    float yRotationForMovement;
+    float yRotation;
     float lookSpeedX = 3;
 
     //The physics layers you want the player to be able to jump off of. Just dont include the layer the palyer is on.
@@ -64,6 +66,7 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        if(PlayerControlAllowed){
         //Creates a movement vector local to the direction the player is facing.
         Vector3 moveDir = transform.forward * Input.GetAxis("Vertical") + transform.right * Input.GetAxis("Horizontal"); // Use GetAxisRaw for snappier but non-analogue  movement
         moveDir *= moveSpeed;
@@ -73,12 +76,15 @@ public class PlayerController : MonoBehaviour
         //The sphere check draws a sphere like a ray cast and returns true if any collider is withing its radius.
         //grounded is set to true if a sphere at feetTrans.position with a radius of groundCheckDist detects any objects on groundLayer within it
         grounded = Physics.CheckSphere(feetTrans.position, groundCheckDist, groundLayer);
+        }
     }
 
     void Update()
     {
-        yRotationForMovement += Input.GetAxis("Mouse X") * lookSpeedX;
-        //xRotation -= Input.GetAxis("Mouse Y") * lookSpeedY;
+        if(PlayerControlAllowed){
+        yRotation += Input.GetAxis("Mouse X") * lookSpeedX;
+        xRotation -= Input.GetAxis("Mouse Y") * lookSpeedY;
+        xRotation = Mathf.Clamp(xRotation, -90, 90); //Keeps up/down head rotation realistic
 
         transform.eulerAngles = new Vector3(0, yRotationForMovement, 0);
 
@@ -91,7 +97,9 @@ public class PlayerController : MonoBehaviour
             jumpSound.Play();
         }
 
-        staminaBar.value = (float) stamina/max_stamina;
+        if(staminaBar != null){
+            staminaBar.value = (float) stamina/max_stamina;
+        }
 
         if (grounded && Input.GetButton("Sprint") && stamina > 0 && sprint_cooldown == 0)
         {
@@ -136,6 +144,7 @@ public class PlayerController : MonoBehaviour
         {
             footstepsSound.enabled = false;
             sprintSound.enabled = false;
+        }
         }
 
     }
